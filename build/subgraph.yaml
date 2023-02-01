@@ -17,7 +17,7 @@ dataSources:
         - ERC1155Contract
       abis:
         - name: IERC1155
-          file: erc1155\node_modules\@openzeppelin\contracts\build\contracts\IERC1155MetadataURI.json
+          file: erc1155/node_modules/@openzeppelin/contracts/build/contracts/IERC1155MetadataURI.json
       eventHandlers:
         - event: ApprovalForAll(indexed address,indexed address,bool)
           handler: handleApprovalForAll
@@ -27,7 +27,7 @@ dataSources:
           handler: handleTransferSingle
         - event: URI(string,indexed uint256)
           handler: handleURI
-      file: erc1155\erc1155.wasm
+      file: erc1155/erc1155.wasm
   - kind: ethereum/contract
     name: ownable
     network: goerli
@@ -43,11 +43,11 @@ dataSources:
         - Ownable
       abis:
         - name: Ownable
-          file: ownable\node_modules\@openzeppelin\contracts\build\contracts\Ownable.json
+          file: ownable/node_modules/@openzeppelin/contracts/build/contracts/Ownable.json
       eventHandlers:
         - event: OwnershipTransferred(indexed address,indexed address)
           handler: handleOwnershipTransferred
-      file: ownable\ownable.wasm
+      file: ownable/ownable.wasm
   - kind: ethereum/contract
     name: accesscontrol
     network: goerli
@@ -63,7 +63,7 @@ dataSources:
         - AccessControl
       abis:
         - name: AccessControl
-          file: accesscontrol\node_modules\@openzeppelin\contracts\build\contracts\IAccessControl.json
+          file: accesscontrol/node_modules/@openzeppelin/contracts/build/contracts/IAccessControl.json
       eventHandlers:
         - event: RoleAdminChanged(indexed bytes32,indexed bytes32,indexed bytes32)
           handler: handleRoleAdminChanged
@@ -71,4 +71,4 @@ dataSources:
           handler: handleRoleGranted
         - event: RoleRevoked(indexed bytes32,indexed address,indexed address)
           handler: handleRoleRevoked
-      file: accesscontrol\accesscontrol.wasm
+      file: accesscontrol/accesscontrol.wasm
