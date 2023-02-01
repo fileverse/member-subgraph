@@ -1,0 +1,74 @@
+specVersion: 0.0.4
+schema:
+  file: schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: erc1155
+    network: goerli
+    source:
+      address: "0xb124a1b402a120e14c55ee5791F6ac253f3bD213"
+      abi: IERC1155
+      startBlock: 8384721
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - ERC1155Contract
+      abis:
+        - name: IERC1155
+          file: ./node_modules/@openzeppelin/contracts/build/contracts/IERC1155MetadataURI.json
+      eventHandlers:
+        - event: ApprovalForAll(indexed address,indexed address,bool)
+          handler: handleApprovalForAll
+        - event: TransferBatch(indexed address,indexed address,indexed address,uint256[],uint256[])
+          handler: handleTransferBatch
+        - event: TransferSingle(indexed address,indexed address,indexed address,uint256,uint256)
+          handler: handleTransferSingle
+        - event: URI(string,indexed uint256)
+          handler: handleURI
+      file: .\node_modules\@openzeppelin\subgraphs\src\datasources\erc1155.ts
+  - kind: ethereum/contract
+    name: ownable
+    network: goerli
+    source:
+      address: "0xb124a1b402a120e14c55ee5791F6ac253f3bD213"
+      abi: Ownable
+      startBlock: 8384721
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - Ownable
+      abis:
+        - name: Ownable
+          file: ./node_modules/@openzeppelin/contracts/build/contracts/Ownable.json
+      eventHandlers:
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+      file: .\node_modules\@openzeppelin\subgraphs\src\datasources\ownable.ts
+  - kind: ethereum/contract
+    name: accesscontrol
+    network: goerli
+    source:
+      address: "0xb124a1b402a120e14c55ee5791F6ac253f3bD213"
+      abi: AccessControl
+      startBlock: 8384721
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - AccessControl
+      abis:
+        - name: AccessControl
+          file: ./node_modules/@openzeppelin/contracts/build/contracts/IAccessControl.json
+      eventHandlers:
+        - event: RoleAdminChanged(indexed bytes32,indexed bytes32,indexed bytes32)
+          handler: handleRoleAdminChanged
+        - event: RoleGranted(indexed bytes32,indexed address,indexed address)
+          handler: handleRoleGranted
+        - event: RoleRevoked(indexed bytes32,indexed address,indexed address)
+          handler: handleRoleRevoked
+      file: .\node_modules\@openzeppelin\subgraphs\src\datasources\accesscontrol.ts
