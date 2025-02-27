@@ -1,5 +1,5 @@
 # Member Subgraph
-Subgraph code to build an open API to index and query members information on FIleverse Portal
+Subgraph code to build an open API to index and query members information on Fileverse Portal
 
 ## Setting up the Subgraph
 If your smart contract is on the Ethereum Mainnet network then use `Subgraph Studio`, for any other network use `Hosted Service`
